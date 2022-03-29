@@ -1,12 +1,8 @@
 # Run dolphin in a container
 
 # Base docker image
-FROM debian:sid
-MAINTAINER Diom
+FROM ubuntu:18.04
 
-# This is irrelevant now I build it with '--network="host"' option
-# echo "nameserver 192.168.0.254\nnameserver 80.67.169.12\nnameserver 80.67.169.40" > /etc/resolv.conf \
-#     && echo "deb http://ftp.fr.debian.org/debian/ unstable main contrib non-free" > /etc/apt/sources.list \
 
 #Install Dolphin and prerequisites
 RUN apt-get update && apt-get install -y \
@@ -25,7 +21,7 @@ RUN apt-get update && apt-get install -y \
    libopenal1 \
    mesa-utils \
    # /End section/
-   dolphin-emu \
+   dolphin-emu-master \
    dolphin-emu-data \
    && apt-get autoremove \
    && rm -rf /var/lib/apt/lists/* \
